@@ -1,0 +1,105 @@
+SPRING.txt
+
+Spring Framework
+
+Frame + work => 어떤 대상을 구성하는 구조/틀/뼈대
+			 => SW 관점 : 기능을 클래스, 인터페이스, 형태로 미리 만들어서 제공하는것(반조립)
+			 => 어느정도의 완성된 상태를 제공함
+			 
+ * 스프링 프레임워크 : 자바 - 웹 애플리케이션을 개발하기 위한 오픈소스 프레임워크
+   => 중량프레임워크(EJB) <-> 경량프레임워크
+   
+   		서버중심 개발			클라이언트 중심개발(모바일)
+   		확장성, 유지보수		생산성, 안정성 			 
+   		
+   		
+ * 스프링 주요 용어
+  
+   - 제어의 역행(Inversion Of Control)이라는 기술을 사용해서 애플리케이션의 느슨한 결합을 제어
+   - 의존성 주입(DI : Dependency Injection) : 클래스, 객체등을 개발자가 직접 코드로 생성X,
+   												프레임워크가 만들어놓은 객체를 가져다가 사용.
+   												
+   - 관점지향 프로그래밍(AOP : Aspect Oriented Programming) : 다양한 자원관리 수행가능
+   				=> 핵심기능을 제외한 나머지 부수기능을 분리 구현해서 처리하는 형태(모듈성 증가)
+   
+   - 영속성관련 다양한 서비스(라이브러리)를 제공
+   
+   * 스프링 주요 기능
+     Core : 다른 기능, 설정들을 분리하기 위한 IoC 기능을 제공
+     Context : 기본기능, 애플리케이션의 각 기능을 하는 객체(빈-Bean)에 대해서 접근.
+     DAO : JDBC기능을 편리하게 사용
+     ORM : 영속성 관련 프레임워크의 연동기능(하이버네이트, 마이바티스)
+     AOP : 관점 지향 프로그래밍 제공
+     Web : 웹 애플리케이션 개발에 필요한 정보 제공
+     WebMVC : 스프링 MVC 구현에 필요한 정보
+     
+p122
+	
+	* MVC(model2)
+	Controller => Model => DAO => DB
+		 |
+		View(jsp)
+
+	* 스프링MVC
+	스프링 MVC => Controller => Service => DAO => MyBatis => DB
+		 |
+		View(jsp)
+	-------------------------|-------------|--------------|	
+		Presentation Layer	  Service Layer Data Access Layer
+		
+		
+	* Presentation Layer : UI 구성하는 요소 (모바일 / 웹)
+	* Business Layer : 서비스 계층 (Service Layer), 데이터 처리로직
+	* Data Access Layer : 데이터 처리 계층 / Persistence Layer (영속 계층)
+	
+	
+	* MyBatis : SQL Mapper 라이브러리(프레임워크)
+	 1) 간결한 코드 처리 : try-catch-finally 생략 / pstmt-setXXX(), rs-rsgetXXX() 생략
+	 2) SQL 구문 분리 : xml 파일, 에노테이션
+	 3) Spring과 자동으로 연동
+	 4) 동적 SQL구문 제공
+	 
+	 DAO(스프링) <= MyBatis-spring => MyBatis => DB
+	
+	*Mybatis : 퍼시스턴스 프레임워크이다.
+			   마이바티스는 JDBC로 처리하는 상당부분의 코드와 파라미터 설정 및
+			   결과 매핑을 대신해준다. 마이바티스는 데이터베이스 레코드에 원시타입과
+			   Map 인터페이스 그리고 자바 POJO를 설정해서 매핑하기 위해 XML과 애노테이션을 사용
+			   
+	 (iBatis)
+	 
+	 방식1) XML(mapper)만 사용하여 SQL구문 처리, DAO에서 XML코드 호출
+	 		장점: XML코드로 작성, SQL 구문 유지보수 편함.
+	 		단점: 코드의 분량 증가, 복잡성이 증가
+	 
+	 방식2) 애노테이션 & 인터페이스의 조합으로 SQL 실행
+	 		장점 : 별도의 DAO 객체 없이 사용 가능 (생산성증가)
+	 		단점 : 코드 변경시 마다 컴파일 발생
+	 		
+	 방식3) XML코드(복잡SQL) / 애노테이션 & 인터페이스(간단SQL)를 같이 사용
+	 		장점 : 유연하게 SQL 작업
+	 		단점 : 개발자의 능력치에 따른 편차 발생
+	 		
+	 Mybatis 사용방법
+	 - 디비 생성 & 계정 준비
+	 - 테이블 생성
+	 - 도메인 객체 및 클래스 생성
+	 - DAO인터페이스 생성 & 수생하는 동작 추상메서드로 선언
+	 - XML mapper 생성
+	 - 저장된 mapper 의 위치 (namespace) 설정
+	 - mapper DTD 설정
+	 - SQL 작성
+	 - Mybatis에서 해당 mapper을 인식하는 설정
+	 - DAO 인터페이스를 구현하는 객체 생성
+	 - DAO 객체를 스프링빈에 등록
+	 - 테스트
+	 
+	 * 도메인 객체 (domain) : 프로젝트에서 가장 중요한 개념 / 단어 (명사) => 객체로 표현(DTO)
+	   ㄴ 도메인 하나의 온전한 개념 / 시스템, 물리적으로 구분 가능한 개념인지 판단
+	 
+	   * DB데이터를 Mybatis 사용해서 처리 동작 로직	
+	   [Test] <=> [DAO/DAOImpl] <=> [mapper] <=> [Mysql]
+		------(스프링)---------
+	
+	
+	
