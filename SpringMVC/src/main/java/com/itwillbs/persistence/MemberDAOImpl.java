@@ -1,6 +1,7 @@
 package com.itwillbs.persistence;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -110,6 +111,35 @@ public class MemberDAOImpl implements MemberDAO{
 //		System.out.println("결과 : " + infoVO);
 		
 		return sqlSession.selectOne(NAMESPACE + "memberInfo", vo);
+	}
+
+
+	@Override
+	public void updateMember(MemberVO uvo) {
+		System.out.println(" DAO : updateMember(MemberVO vo) 실행 ");
+		
+		sqlSession.update(NAMESPACE + "updateVO", uvo);
+	}
+
+
+	@Override
+	public int deleteMember(MemberVO dvo) {
+		System.out.println(" DAO : deleteMember(MemberVO dvo) 실행");
+		
+		int result = sqlSession.delete(NAMESPACE + "deleteVO", dvo);
+		return result;
+	}
+
+
+	@Override
+	public List<MemberVO> memberList() {
+		System.out.println(" DAO : memberList() 실행");
+		
+		// mapper에서 전달받은 VO객체들을 자동으로 List에 저장
+		List<MemberVO> resultVO = sqlSession.selectList(NAMESPACE + "memberList");
+		
+		return resultVO;
+		
 	}
 
 

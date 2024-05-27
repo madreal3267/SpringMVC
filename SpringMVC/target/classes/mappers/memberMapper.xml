@@ -25,4 +25,19 @@
   	<select id="memberInfo" resultType="com.itwillbs.domain.MemberVO">
   		select * from tbl_member where userid = #{userid}
   	</select>
+  	
+  	<!-- 회원정보 수정 -->
+  	<update id="updateVO">
+  	 	update tbl_member set username=#{username},useremail=#{useremail},updatedate=now() 
+  	 	where userid=#{userid}  	 	
+  	</update>
+	<!-- 회원정보 삭제 -->
+	<delete id="deleteVO">
+		delete from tbl_member where userid = #{userid} and userpw = #{userpw}
+	</delete>
+  	
+  	<!-- 회원정보 목록 -->
+  	<select id="memberList" resultType="com.itwillbs.domain.MemberVO">
+  		select * from tbl_member;
+  	</select>
   </mapper>
