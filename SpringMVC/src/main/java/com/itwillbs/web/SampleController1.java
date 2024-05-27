@@ -30,7 +30,6 @@ public class SampleController1 {
 		
 		logger.info(" test() 실행 - logger-info "); 
 		logger.debug(" test() 실행 - logger-debug "); 
-		
 	}
 	
 	

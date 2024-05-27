@@ -1,0 +1,38 @@
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+private static final Logger logger 
+	        = LoggerFactory.getLogger(SampleController1.class);
+
+logger.info(" test() 실행-logger-info ");
+logger.debug(" test() 실행-logger-debug ");
+
+---------------------------------------------------------------------
+* 이클립스 window - Perferences - java - Editor - Templates
+  new 버튼 클릭
+
+이름 : mylog
+context : java    / Automatically insert - O
+설명 : logger 객체 생성/준비
+패턴 : 
+
+${:import(org.slf4j.Logger,org.slf4j.LoggerFactory)}
+
+private static final Logger logger 
+	        = LoggerFactory.getLogger(${enclosing_type}.class);
+
+
+이름 : li
+context : java    / Automatically insert - O
+설명 : logger.info() 호출
+패턴 : 
+  logger.info("${cursor}");
+
+
+
+이름 : ld
+context : java    / Automatically insert - O
+설명 : logger.debug() 호출
+패턴 : 
+  logger.debug("${cursor}");
+
