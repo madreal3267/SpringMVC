@@ -70,7 +70,7 @@ public class MemberController {
 		mService.memberJoin(vo);
 		
 		// 연결된 뷰페이지 실행(페이지 이동) -> 로그인 페이지
-		return "로그인페이지";
+		return "redirect:/member/login";
 	}
 	
 	

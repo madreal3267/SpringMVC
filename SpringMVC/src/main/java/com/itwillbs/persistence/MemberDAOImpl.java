@@ -8,6 +8,8 @@ import javax.inject.Inject;
 
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.itwillbs.domain.MemberVO;
@@ -20,6 +22,11 @@ import com.itwillbs.domain.MemberVO;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO{
+	
+	
+
+	private static final Logger logger = LoggerFactory.getLogger(MemberDAOImpl.class);
+
 	
 	// 공용변수, 디비연결, 자원해제 동작 선언 => 기존코드
 	
