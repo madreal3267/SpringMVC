@@ -88,7 +88,7 @@ public class MemberDAOTest {
 		
 		// 아이디에 해당하는 사용자 정보 전부를 DB에서 가져오기
 		// 기존) MemberDAO dao = new MemberDAO(); 생략
-		MemberVO resultVO = mdao.infoMember(infoVO);
+		MemberVO resultVO = mdao.getMember(infoVO);
 		
 		if(resultVO == null) {
 			System.out.println(" Test : 로그인 실패 ");

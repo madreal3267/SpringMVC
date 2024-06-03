@@ -52,6 +52,48 @@ public class MemberServiceImpl implements MemberService{
 		
 		logger.debug(" 회원가입 성공!");
 	}
+
+	@Override
+	public MemberVO memberLogin(MemberVO loginVO) {
+		logger.debug(" 컨트롤러 - > 서비스 호출 ");
+		logger.debug(" memberLogin(loginVO)");
+		
+		logger.debug(" 서비스 -> DAO 호출");
+		// DAO 로그인처리 동작 호출
+		MemberVO resultVO = mdao.loginMember(loginVO);
+		logger.debug(" DAO처리결과 -> 서비스 ");
+		logger.debug(" 서비스 - > 컨트롤러");
+		
+		return resultVO;
+	}
+
+	@Override
+	public MemberVO getMember(String userid) {
+		
+		logger.debug("getMember(String userid) 호출 ");
+		
+		return mdao.getMember(userid);
+	}
+
+	@Override
+	public void memberUpdate(MemberVO uvo) {
+		
+		logger.debug(" memberUpdate(MemberVO uvo) 호출");
+		
+		mdao.updateMember(uvo);
+	}
+
+	@Override
+	public int memberDelete(MemberVO dvo) {
+		
+		logger.debug(" memberDelete(MemberVO dvo) 호출");
+		
+		return mdao.deleteMember(dvo);
+	}
+
+	
+	
+	
 	
 	
 
